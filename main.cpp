@@ -170,11 +170,10 @@ int main() {
 
     uint16_t pressure_measurement = 0;
 
-    //IPStack ipstack("SSID", "PASSWORD"); // example
-    IPStack ipstack(target.getSSID().data(), target.getPassword().data()); // example
+    IPStack ipstack(target.getSSID().data(), target.getPassword().data());
     auto client = MQTT::Client<IPStack, Countdown, 250>(ipstack); //added 200, for max size of the MQTT-mssg
 
-    int rc = ipstack.connect(target.getHostname().data(), target.getPort()); // mqtt server ip and port, SmartIotMQTT server IP: 192.168.1.10
+    int rc = ipstack.connect(target.getHostname().data(), target.getPort()); // mqtt server ip and port
     if (rc != 1) {
         std::cout << "rc from TCP connect is " << rc << std::endl;
     }
